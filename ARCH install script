@@ -1,0 +1,135 @@
+ARCH install script:
+
+timedatectl set-ntp true
+timedatectl status
+
+
+####Using fdisk:
+
+#In fdisk, "m" for help
+#In fdisk, "o" for DOS partition or "g" for GPT
+#In fdisk, "n" for add new partition
+#In fdisk, "p" for primary partition (if using MBR instead of GPT)
+#In fdisk, "t" to change partition type
+#In fdisk, "w" (write table to disk)
+
+fdisk -l   (lists out the partitions)
+fdisk /dev/sda  
+g 
+n
+2 enters
++550m (for efi system)
+n
+2 enters
++8g   (amount of swap u want)
+n
+3 enters
+t
+1
+1
+t
+2
+19
+w
+
+
+####Make filesystem:
+
+mkfs.fat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+
+
+####Base Install:
+
+mount /dev/sda3 /mnt (mounts it to mnt on live image)
+pacstrap /mnt base linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+
+
+####Chroot:
+
+arch-chroot /mnt (change into root directory of our new installation)
+ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime (capital A,k)
+hwclock --systohc (sets the hardware clock)
+pacman -S nano
+nano /etc/locale.gen
+#uncomment (#en_IN UTF-8)
+locale-gen
+nano /etc/hostname 
+Arch (name of your hostname)
+nano /etc/hosts
+# come down a line and past this as it is
+# here both 'Arch' is the hostname
+127.0.0.1 	localhost
+::1 		localhost
+127.0.1.1 	Arch.localdomain	Arch 	
+
+####Users and passwords:
+
+passwd (set root pass)
+useradd -m username(make another user)
+passwd username (set that user's password)
+usermod -aG wheel,audio,video,optical,storage username
+
+####Sudo:
+
+pacman -S sudo
+EDITOR=nano visudo
+# uncomment this line (# %wheel ALL=(ALL) ALL)
+
+####GRUB:
+
+pacman -S grub efibootmgr dosfstools os-prober mtools git base-devel 
+mkdir /boot/EFI 
+mount /dev/sda1 /boot/EFI  (Mount FAT32 EFI partition u first created)
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck 
+grub-mkconfig -o /boot/grub/grub.cfg
+
+####Networking:
+
+pacman -S networkmanager
+systemctl enable NetworkManager
+exit
+umount -l /mnt
+shutdown now   (reboot if in machine)
+#Remember to detach the ISO in VirtualBox before reboot.
+#login back to check if base if ok or not
+
+####Installing everything:
+
+#login in tty terminal
+sudo nano /etc/pacman.conf
+#uncomment multilib (#include = /etc/pacman.d/mirrorlis) (#color) 
+#if in machine then search the video driver u need 
+#in kde plasma in kitty install gnome, dwm,....
+
+#installing paru
+
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+cd
+paru -S jdk pamac-aur ffmpeg-git youtube-dl xf86-video-fdev xorg xorg-xinit picom firefox wget flashplugin transmission libreoffice-fresh gimp mpv vlc htop kitty wine virtualbox  linux-lts linux-lts-headers plasma lxdm 
+systemctl enable lxdm.service
+
+
+#starship prompt for terminal
+
+curl -fsSL https://starship.rs/install.sh
+subl .bash.rc
+#at the end of bashrc file for bash
+eval "$(starship init bash)"
+
+#installing sublime text
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+
+
+#installing spotify adblocker
+
+#installing whatsapp
+
+#installing kde connect
+
+#installing gnome extensions
