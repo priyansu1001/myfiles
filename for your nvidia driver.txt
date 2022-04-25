@@ -7,6 +7,7 @@ https://www.nvidia.com/Download/Find.aspx?lang=en-us
 
 https://www.if-not-true-then-false.com/2020/inttf-nvidia-patcher/
 
+that inttf file run that with  'inttf-nvidia-patcher.sh -v 340.108' on terminal to produre patched 340.108 nvidia driver
 
 
 
