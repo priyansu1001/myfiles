@@ -9,5 +9,11 @@ https://www.if-not-true-then-false.com/2020/inttf-nvidia-patcher/
 
 that inttf file run that with  'inttf-nvidia-patcher.sh -v 340.108' on terminal to produre patched 340.108 nvidia driver
 
+just run the below script no need to download nvidia official driver it will grab it for u
+
+chmod +x inttf-nvidia-patcher.sh
+inttf-nvidia-patcher.sh -v 340.108
+
+
 
 
