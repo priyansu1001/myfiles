@@ -1,7 +1,7 @@
 # my alias.
 
 alias update='sudo apt-get update && sudo apt-get upgrade'
-alias lofi='mpv https://youtu.be/5qap5aO4i9A'
+alias lofi='mpv https://youtu.be/jfKfPfyJRdk'
 alias sakuralofi='cd Desktop/raja\ games/videos/ 
 mpv cherry\ blossom\ lofi\ jazzhop\ chill\ mix_1080p.mp4 '
 alias spotify='spotify --no-zygote'
