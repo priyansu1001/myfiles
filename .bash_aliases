@@ -13,6 +13,16 @@ alias buddha1='cd Desktop/raja\ games/videos/folder/
 mpv buddha.mp4 --loop --no-audio'
 alias reboot='sudo systemctl reboot'
 alias nvmaxpowermizer='nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1''
+alias buddha1='cd ~/Desktop/raja\ games/videos/folder/
+mpv buddha.mp4 --loop --no-audio'
+alias buddhalife='cd ~/Desktop/raja\ games/videos
+mpv Buddha\ life.webm'
+alias cpumaxpower='sudo cpupower frequency-set -g powersave -d 2.5G -u 3.1G && sudo cpupower frequency-set -g performance'
+alias publicip='curl https://ipinfo.io/ip'
+
+#for flashing iso by cmd 
+#sudo dd bs=4M if=Downloads/debian-live-11.4.0-amd64-gnome+nonfree.iso of=/dev/sdd oflag=sync status=progress
+
 
 #alias spotify='spotify --no-zygote'
 #alias myspotify='LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify'
