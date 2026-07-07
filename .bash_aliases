@@ -4,15 +4,22 @@ alias countdown='termdown --font big -b'
 alias soft-reboot='sudo systemctl soft-reboot'
 alias current_time='tty-clock -f "%A %m/%d/%Y" -sxc'
 alias update='sudo pacman -Syu'
-alias lofi='mpv https://youtu.be/jfKfPfyJRdk'
+alias lofi='mpv https://youtu.be/jfKfPfyJRdk --no-video'
+alias lofiv='mpv https://youtu.be/jfKfPfyJRdk'
 alias rm='rm -rf'
-alias dhammapada='mpv ~/Desktop/raja\ games/books/The\ Dhammapada.wav'
-alias thewayofpeace='mpv  ~/Desktop/raja\ games/books/The\ Way\ of\ Peace.wav'
 alias reboot='sudo systemctl reboot'
 alias nvmaxpowermizer='nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1''
-alias buddhalife='mpv ~/Desktop/raja\ games/videos/Buddha\ life.webm'
 alias cpumaxpower='sudo cpupower frequency-set -g powersave -d 2.5G -u 3.1G && sudo cpupower frequency-set -g performance'
 alias publicip='curl https://ipinfo.io/ip'
+alias ..='z ..'
+alias genshin='ping 47.91.24.239'
+alias giting='git add . ; git commit ; git push'
+
+alias buddhalife='mpv ~/Desktop/raja\ games/videos/Buddha\ life.webm'
+alias dhammapada='mpv ~/Desktop/raja\ games/books/The\ Dhammapada.wav'
+alias thewayofpeace='mpv  ~/Desktop/raja\ games/books/The\ Way\ of\ Peace.wav'
+
+
 
 
 #for flashing iso by cmd 
@@ -24,4 +31,4 @@ alias publicip='curl https://ipinfo.io/ip'
 #alias spotify='spotify --no-zygote'
 #alias myspotify='LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify'
 #alias minimize,maximize,close='gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close,' '
-alias buddha1='mpv ~/Desktop/raja\ games/videos/folder/buddha.mp4 --loop --no-audio'
+# alias buddha1='mpv ~/Desktop/raja\ games/videos/folder/buddha.mp4 --loop --no-audio'
