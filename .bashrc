@@ -114,5 +114,13 @@ if ! shopt -oq posix; then
 fi
 
 eval "$(starship init bash)"
-. /usr/share/autojump/autojump.sh
+eval "$(zoxide init bash)"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}
