@@ -1,5 +1,5 @@
 # my alias.
-alias ll ='eza -aalgh --icons=always --color=always --follow-symlinks'
+alias ll='eza -aalgh --icons=always --color=always --follow-symlinks'
 alias countdown='termdown --font big -b'
 alias soft-reboot='sudo systemctl soft-reboot'
 alias current_time='tty-clock -f "%A %m/%d/%Y" -sxc'
